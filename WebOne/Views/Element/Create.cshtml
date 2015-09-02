@@ -1,0 +1,25 @@
+﻿@using DataAccessLayer
+@model Element
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Creating A New Element</legend>
+
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+        <br />
+
+        <input type="submit" value="Create" />
+
+    </fieldset>
+}
+

@@ -6,9 +6,17 @@
 
 <h2>Index</h2>
 
-<ul>
+@Html.ActionLink("Create New", "Create", "Element")
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+    </tr>
     @foreach(Element E in Model)
     {
-        <li>@E.Name</li>
+        <tr>
+            <td>@E.Name</td>
+        </tr>
     }
-</ul>
+</table>

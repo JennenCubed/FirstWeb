@@ -38,5 +38,22 @@ namespace DataAccessLayer
                 return elements;
             }
         }
+
+        public void addElement(Element E)
+        {
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("addElement", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter PName = new SqlParameter();
+                PName.ParameterName = "@Name";
+                PName.Value = E.Name;
+                cmd.Parameters.Add(PName);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

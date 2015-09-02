@@ -16,5 +16,24 @@ namespace WebOne.Controllers
             List<Element> elements = EDAL.elements.ToList();
             return View(elements);
         }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(FormCollection F)
+        {
+            Response.Write("The Element Has been Created");
+
+            Element E = new Element();
+            E.Name = F[0].ToString();
+            EDAL.addElement(E);
+
+            List<Element> elements = EDAL.elements.ToList();
+            return View("Index", elements);
+        }
     }
 }
